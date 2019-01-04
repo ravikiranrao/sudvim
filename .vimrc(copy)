@@ -1,0 +1,98 @@
+"Install vim-plug, the plugin manager
+"To install Plugins, type :PlugInstall
+"To uninstall Plugins, type :PlugClean
+"
+call plug#begin('~/.vim/plugged')
+
+Plug 'valloric/youcompleteme'
+"YCM is a code completion engine for vim
+"UTF encoding is required for this
+set encoding=utf-8
+"
+Plug 'sirver/ultisnips'
+"UltiSnips is the ultimate solution for snippets in Vim. It has tons of features and is very fast.
+"
+"let g:UltiSnipsUsePythonVersion = 2
+"let g:UltiSnipsUsePythonVersion = 3
+set runtimepath+=~/sudvim/
+"Don't remove the folders sudvim or Ultisnips. If you do, please change the
+"path below
+"
+let g:UltiSnipsSnippetsDir='~/sudvim/UltiSnips'
+"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+"below ensures that an empty tex file is valid. Otherwise the snippets aren't
+"activated on an empty tex file
+let g:tex_flavor = "latex"
+"
+Plug 'powerline/powerline'
+"Powerline is a statusline plugin for vim, and provides statuslines and prompts for several other applications, including zsh, bash, tmux, IPython, Awesome and Qtile.
+"
+Plug 'tpope/vim-fugitive'
+"Fugitive is a git wrapper plugin.
+"commands are given here https://github.com/tpope/vim-fugitive
+Plug 'vim-syntastic/syntastic'
+"Syntastic is a syntax checking plugin for Vim.
+"The following lines are suggested by the creator.
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_quiet_messages = { "type": "style" }
+"
+Plug 'lervag/vimtex'
+"vimtex is a Vim plugin that provides support for writing LaTeX documents.
+"Start compiling the document with '\ll'
+"Open PDF viewer and/or do forward searching with '\lv'
+"Stop the running compilation with '\ll' or '\lk'
+"To parse the log file for errors and warnings, press '\le'
+"To clean auxiliary files, press '\lc' (or \lC to remove PDF's)
+
+"This will enable folding in vimtex. use the command za to toggle
+"folding/unfolding
+let g:vimtex_fold_enabled =1 "
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+"This is for the regex function
+au VimEnter * let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
+"let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
+"
+
+Plug 'ervandew/supertab'
+"Supertab is a vim plugin which allows you to use <Tab> for all your insert completion needs (:help ins-completion).
+"
+Plug 'jnurmine/Zenburn'
+"Zenburn is a low-contrast color scheme for Vim.
+"It is easy for your eyes and designed to keep you in the zone for long
+"programming sessions.
+"Firstly, download the colors folder from git
+"git clone https://github.com/jnurmine/Zenburn.git
+"Next, tranfer this colors folder to ~/.vim 
+"To automatically load the colors upon startup of Vim
+"set t_Co=256
+
+colors zenburn
+"
+"Plug 'altercation/vim-colors-solarized'
+"precision colorscheme for the vim text editor http://ethanschoonover.com/solarized
+Plug 'scrooloose/nerdtree'
+"To manually open nedtree just type :NERDTree in the command mode. But, you
+"can usee keyboard shortcut too, as explained below.
+"
+"The NERDTree is a file system explorer for the Vim editor. Using this plugin, users can visually browse complex directory hierarchies, quickly open files for reading or editing, and perform basic file system operations.
+"
+"Stick this in your vimrc to open NERDTree with Ctrl+n (not CMD+n, for Mac) (you can set whatever key you want):
+map <C-n> :NERDTreeToggle<CR>
+"Plug 'kien/ctrlp.vim'
+"This plugin is not well mantained now. Hence commented it.
+call plug#end()
+
+
+
